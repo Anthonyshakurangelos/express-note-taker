@@ -25,6 +25,12 @@ router.post("/", (req, res) => {
     res.json(item);
 });
 
+router.get('/', (req, res) => {
+    const db = fs.readFileSync('./db/db.json', (err) => { if (err) console.log(err)});
+    res.json(JSON.parse(db));
+
+});
+
 router.delete('/:id', (req, res) => {
         const db = JSON.parse(fs.readFileSync('./db/db.json', (err) => { if (err) console.log(err)}));
          const newDb = db.filter((note) => {
